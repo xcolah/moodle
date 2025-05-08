@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: moodle
+    env: docker
+    plan: starter
+    region: oregon
+    disk:
+      name: moodle-data
+      mountPath: /bitnami/moodle
+      sizeGB: 2
+    envVars:
+      - key: MOODLE_USERNAME
+        value: admin
+      - key: MOODLE_PASSWORD
+        value: admin123
+      - key: MOODLE_EMAIL
+        value: admin@example.com
+      - key: MOODLE_DATABASE_NAME
+        value: bitnami_moodle
+      - key: MOODLE_DATABASE_USER
+        value: bn_moodle
+      - key: MOODLE_DATABASE_PASSWORD
+        value: your_mariadb_password
+      - key: MARIADB_HOST
+        value: your_mariadb_internal_hostname
+    **port: 8080**
